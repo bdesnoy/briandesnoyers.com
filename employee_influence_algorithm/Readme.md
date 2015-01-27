@@ -39,7 +39,7 @@ Output Format:
 Line 1: VALUE
 Where VALUE is the max possible total utility from a selection of k employees.
 
-'''
+```
 Sample Input:
 5 2
 1 0 10
@@ -50,4 +50,4 @@ Sample Input:
 
 Sample Output:
 85
-'''
+```
