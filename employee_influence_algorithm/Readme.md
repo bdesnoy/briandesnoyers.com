@@ -10,7 +10,7 @@ coursework for the Algorithms and Data Structures course at Northeastern
 University. A greedy algorithm was used to find the solution, as described
 in the Readme.pdf file. The list of employees was maintained in a priority
 queue implementation to ensure that it could process a list of ~800,000
-employees in under one minute. 
+employees in under one minute.
 
 Problem Description
 -------------------
@@ -39,6 +39,7 @@ Output Format:
 Line 1: VALUE
 Where VALUE is the max possible total utility from a selection of k employees.
 
+'''
 Sample Input:
 5 2
 1 0 10
@@ -49,3 +50,4 @@ Sample Input:
 
 Sample Output:
 85
+'''
