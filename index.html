@@ -1,73 +1,148 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Brian Desnoyers&#39; Projects by bdesnoy</title>
+<!DOCTYPE html>
+<html lang="en">
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>Brian Desnoyers&#39; Projects</h1>
-        <p></p>
+<head>
+  <meta charset="UTF-8">
+  <title>Brian Desnoyers</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/prefixfree.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
 
+<body>
 
-        <p class="view"><a href="https://github.com/bdesnoy">View My GitHub Profile</a></p>
+<header>
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#home"><h1>Brian Desnoyers <span class="subhead">Personal Website</span></h1></a>
+      </div><!-- navbar-header -->
+      <div class="collapse navbar-collapse" id="collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active"><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="resume.pdf">Résumé</a></li>
+          <li><a href="mailto:brian@briandesnoyers.com">Contact</a></li>
+        </ul>        
+      </div><!-- collapse navbar-collapse -->
+    </div><!-- container -->
+  </nav>
 
-      </header>
-      <section>
-        <h2>
-<a id="welcome-to-my-portfolio" class="anchor" href="#welcome-to-my-portfolio" aria-hidden="true"><span class="octicon octicon-link"></span></a>Welcome to my portfolio</h2>
+  <div class="carousel fade" data-ride="carousel" id="home">
 
-<p>Here I post a variety of simple projects and assignments I have worked on, listed by type.</p>
+    <ol class="carousel-indicators">
+    </ol>
 
-<h3>
-<a id="current-project-bike-beacon-ios" class="anchor" href="#current-project-bike-beacon-ios" aria-hidden="true"><span class="octicon octicon-link"></span></a>Current Project: Bike Beacon (iOS)</h3>
+    <div class="carousel-inner fullheight">
+      <div class="item"><img src="images/carousel-beach.jpg" alt="Beach in Rhode Island"></div>   
+      <div class="item"><img src="images/carousel-greatwall.jpg" alt="Great Wall"></div>   
+      <div class="item"><img src="images/carousel-island.jpg" alt="Boston Harbor Island"></div>   
+      <div class="item"><img src="images/carousel-street.jpg" alt="Street in Beijing"></div>   
+    </div><!-- carousel-inner -->
 
-<p>I am currently working on a team developing mobile applications to interact with sensors to be deployed on busses and other public transportation vehicles that prevent collisions between these vehicles and bicycles. My role on this team is iOS application developer. For now, all source code for this project is private.</p>
+    <a class="left carousel-control" href="#home" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a class="right carousel-control" href="#home" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+  </div><!-- home carousel -->
+</header>
 
-<h3>
-<a id="space-invaders-game-java" class="anchor" href="#space-invaders-game-java" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="https://github.com/bdesnoy/bdesnoy.github.io/tree/master/space_invaders">Space Invaders Game (Java)</a>
-</h3>
+<div class="main">
+  <div class="page" id="about">
+    <div class="content container">
+      <h2>About</h2>      
+      <div class="row">
+        <p class="col-md-5 col-md-offset-1">I am currently studying a combination of computer science and biology as an undergraduate student in the honors program at Northeastern University in Boston.</p>
+        <p class="col-md-5">I aspire to enter the field of medicine and am interested in studying the ways in which software can impact healthcare and medical research.</p>
+      </div><!-- row -->
+    </div><!-- content container -->
+  </div><!-- mission page -->
 
-<p>This is a clone of the Space Invaders game I built in Java with a partner as part of the Fundamentals of Computer Science 2 Honors course at Northeastern University.</p>
+  <div class="page" id="skills">
+    <div class="content container">
+      <h2>Skills</h2>
+      <div class="row">
+        <article class="service col-md-4 col-sm-6 col-xs-12">
+          <img class="icon" src="images/skills-languages.svg" alt="Icon">
+          <h3>Languages</h3>
+          <p>Experience working with languages such as Java, Swift, SQL, Perl, R, Python, Lisp/Racket/ACL2, C/C++, XML, and LaTeX.</p>
+        </article>
 
-<h3>
-<a id="algorithm-to-maximize-employee-influence-python" class="anchor" href="#algorithm-to-maximize-employee-influence-python" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="https://github.com/bdesnoy/bdesnoy.github.io/tree/master/employee_influence_algorithm">Algorithm to Maximize Employee Influence (Python)</a>
-</h3>
+        <article class="service col-md-4 col-sm-6 col-xs-12">
+          <img class="icon" src="images/skills-systems.svg" alt="Icon">
+          <h3>Systems</h3>
+          <p>Skilled in use of systems running OS X, Ubuntu and other flavors of Linux, and Windows XP/Vista/7/8/10.</p>
+        </article>
 
-<p>This is a program that finds the optimum employees to influence in a company to spread propaganda within a company, as described in the problem description. The program is written in Python and was written as part of coursework for the Algorithms and Data Structures course at Northeastern University. A greedy algorithm was used to find the solution, as described in the Readme.pdf file. The list of employees was maintained in a priority queue implementation to ensure that it could process a list of ~800,000 employees in under one minute.</p>
+        <article class="service col-md-4 col-sm-12 col-xs-12">
+          <img class="icon" src="images/skills-software.svg" alt="Icon">
+          <h3>Software</h3>
+          <p>Proficiency in using software tools including Xcode, IntelliJ IDEA/PyCharm, Eclipse, R Studio, Vim, and Microsoft Office.</p>
+        </article>
 
-<h3>
-<a id="bakery-manager-java" class="anchor" href="#bakery-manager-java" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="https://github.com/bdesnoy/bdesnoy.github.io/tree/master/bakery">Bakery Manager (Java)</a>
-</h3>
+      </div><!-- row -->   
+    </div><!-- content container -->
+  </div><!-- services page -->
 
-<p>This is a bakery management system designed for a fictional client in North Carolina as part of the Object Oriented Design Course at Northeastern University.</p>
+  <div class="page" id="projects">
+    <div class="container-fluid">
+      <h2>Projects</h2>
+      <div class="row">
+        <blockquote class="col-sm-4" id="bikebeacon">
+          <div class="quote">
+            <span class="intro">Bike Beacon</span>
+            <span class="more">I have developed a novel cyclist-driver communication application to be used by cyclists and vehicle drivers to prevent unnecessary collisions. For more information, please visit <a href="http://bikebeacon.com/">bikebeacon.com</a>. Based on input from our buisness advisors, our team has moved to a hardware model to improve user adoption. I am currently working on designing software to run directly on our hardware sensors and transmitters that we hope to market shortly. </span>
+          </div>
+        </blockquote>
 
-<h3>
-<a id="logo-design-for-launch-program-inkscape--logo-design" class="anchor" href="#logo-design-for-launch-program-inkscape--logo-design" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="https://github.com/bdesnoy/bdesnoy.github.io/tree/master/launch_logo">Logo Design for LAUNCH Program (Inkscape / Logo Design)</a>
-</h3>
+        <blockquote class="col-sm-4" id="pvt">
+          <div class="quote">
+            <span class="intro">iOS Psychomotor vigilance task</span>
+            <span class="more">I have developed a millisecond accurate iOS PVT along with a cognitive testing platform for Brigham and Women’s Hospital during my co-op working as a technician in their sleep laboratory. The PVT is a sustained attention test that has been shown to respond to changes in alertness caused by factors such as sleep deprivation and circadian phase. I am currently writing a technical paper about the approaches used to accomplish this task and improve iPhone and iPad response time accuracy.</span>
+          </div>
+        </blockquote>
 
-<p>This is a logo I designed for a new combined athletic and tutoring program for Boston Public High School students, titled Launch.</p>
+        <blockquote class="col-sm-4" id="streamline">
+          <div class="quote">
+            <span class="intro">Swim Team Web Application</span>
+            <span class="more">I have designed a web application for swim team management that allows swimmers and parents to sign up for meets and view and analyze their times, among other things. The software imports and exports to proprietary formats utilized by commonly used desktop swim and meet management software and allows coaches to easily manage their teams through a simple web interface. I have also designed a companion iOS app and web API. A running version of the software can be viewed at <a href="http://streamline.pythonanywhere.com/">streamline.pythonanywhere.com</a>.</span>
+          </div>
+        </blockquote>      
+      </div>
+    </div><!-- container -->
+  </div><!-- testimonials page -->
+</div><!-- main -->
 
-<h3>
-<a id="biostatistics-assignment-r--latex-for-typesetting" class="anchor" href="#biostatistics-assignment-r--latex-for-typesetting" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="https://github.com/bdesnoy/bdesnoy.github.io/tree/master/biostatistics_assignment">Biostatistics Assignment (R / LaTeX for Typesetting)</a>
-</h3>
+<footer>
+  <div class="content container-fluid">
+    <div class="row">
+      <div class="col-sm-6">
+        <p>&copy; 2015 Brian Desnoyers.</p>    
+      </div><!-- col-sm-6 -->
+      <div class="col-sm-6">
+        <nav class="navbar navbar-default" role="navigation">
+          <ul class="nav navbar-nav navbar-right">
+          <a href="https://www.linkedin.com/pub/brian-desnoyers/73/187/676"><img src="https://static.licdn.com/scds/common/u/img/webpromo/btn_myprofile_160x33.png" width="160" height="33" border="0" alt="View Brian Desnoyers's profile on LinkedIn"></a>
+          </ul>
+        </nav>        
+      </div><!-- col-sm-6 -->
+    </div><!-- row -->
+  </div><!-- content container -->
+</footer>
 
-<p>This is an example of an analysis of biological data using the R programming language as part of a Biostatistics course at Northeastern University. The assignment looked at Environmental forcing in Eastern Boundary Current Systems and Temporal trends in upwelling and primary production.</p>
-      </section>
-      <footer>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
-    
-  </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script src="js/myscript.js"></script>
+</body>
 </html>
