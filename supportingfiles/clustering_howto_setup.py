@@ -63,19 +63,16 @@ def kmeans(initial_centroids, data, distance_metric):
         
     return centroids, new_clusters, iterations, total_sse
 
-def cluster_plot(centroids, data, clustering):
-    for i,c in enumerate(centroids):
-        points = [data[idx] for idx,c in enumerate(clustering) if c == i]
-        plt.scatter([d[0] for d in points], [d[1] for d in points], label="{}".format(i))
-        plt.plot(c[0], c[1], 'kx', mew=5, ms=10)
-
-def dbscan_plot(data, clustering):
-    for cluster in set(clustering):
-        points = [data[idx] for idx, c in enumerate(clustering) if c == cluster]
-        if cluster == -1:
-            plt.scatter([d[0] for d in points], [d[1] for d in points], label="{}".format(cluster), c='black')
-        else:
-            plt.scatter([d[0] for d in points], [d[1] for d in points], label="{}".format(cluster))
+def cluster_plot(data, clustering, centroids=None):
+    if centroids is not None:
+        for i,c in enumerate(centroids):
+            points = [data[idx] for idx,c in enumerate(clustering) if c == i]
+            plt.scatter([d[0] for d in points], [d[1] for d in points], label="{}".format(i))
+            plt.plot(c[0], c[1], 'kx', mew=5, ms=10)
+    else:
+        for cluster in set(clustering):
+            points = [data[idx] for idx, c in enumerate(clustering) if c == cluster]
+            plt.scatter([d[0] for d in points], [d[1] for d in points], label="{}".format(cluster), c='black' if cluster == -1 else None)
         
 def plot_sse(dataset, max_clusters=10, trials=5):
     clusters = range(1, max_clusters + 1)
@@ -84,7 +81,6 @@ def plot_sse(dataset, max_clusters=10, trials=5):
     seed(notebook_random_state)
 
     # 1. Perform 5 trials (randomizing initial points ala Forgy) for each of K=1, 2, ... 10
-    # 2. Plot SSE vs K
     for k in range(1, 11):
         temp_sse = 0
         for i in range(5):
@@ -98,6 +94,9 @@ def plot_sse(dataset, max_clusters=10, trials=5):
             temp_sse += (total_sse / 5.)
         sses.append(temp_sse)
 
+    # 2. Plot SSE vs K
     plt.plot(clusters, sses)
     plt.xticks(range(1, len(clusters)+1, 1))
-    plt.title('SSE vs Clusters')
+    plt.title('SSE by Number of Clusters')
+    plt.xlabel('K')
+    plt.ylabel('SSE')
