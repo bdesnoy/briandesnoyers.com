@@ -12,3 +12,5 @@ def plot_decision_boundaries(x, y, c, model, scaler, xlab, ylab):
     plt.scatter(x, y, c=c, alpha=0.9)
     plt.xlabel(xlab)
     plt.ylabel(ylab)
+
+intro_ml_colormap = np.array(["#34A5DA", "#8ABE5E", "#E42832"])
