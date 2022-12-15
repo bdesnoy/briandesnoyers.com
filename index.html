@@ -2,147 +2,246 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Brian Desnoyers</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/style.css">
-  <script src="js/prefixfree.min.js"></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <title>Brian Desnoyers</title>
+
+	<!-- Meta Data -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="format-detection" content="telephone=no"/>
+    <meta name="format-detection" content="address=no"/>
+
+    <!-- Styles -->
+	<link rel="stylesheet" type="text/css" href="assets/styles/style.css"/>
+	
+	<!-- Mapbox-->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>
+	<link href='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet' />
+	
 </head>
+<body class="bg-azure">
+    <!-- Preloader -->
+    <div class="preloader">
+	    <div class="preloader__wrap">
+			<svg class="spinner-container" viewBox="0 0 52 52">
+                <circle class="path" cx="26px" cy="26px" r="20px" fill="none" stroke-width="4px" />
+            </svg>
+		    <div class="preloader__progress"><span></span></div>
+		</div>
+	</div>
 
-<body>
+    <main class="main">
+	    <!-- Menu -->
+		<div class="circle-menu">
+			<div class="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+				<div class="hamburger__text">MENU</div>
+            </div>
+		</div>
+						
+		<div class="nav-wrap js-tabs">
+			<ul class="nav">
+                <li class="nav__item"><a class="active" href="#about-tab">About</a></li>
+				<li class="nav__item"><a href="#resume-tab">Resume</a></li>
+                <li class="nav__item"><a href="#contact-tab">Contact</a></li>
+            </ul>
+		</div>
+		
+	    <div class="wrapper">
+			<!-- Sidebar -->
+            <aside class="sidebar" data-simplebar>
+			    <div>
+			        <div class="avatar-wrap">
+				        <svg class="avatar avatar--180" viewBox="0 0 188 188">
+                            <g class="avatar__box">
+                                <image xlink:href="assets/img/memoji.png" height="100%" width="100%" />
+                            </g>
+                        </svg>
+				    </div>
+				    <div class="text-center">
+					    <h3 class="title sidebar__user-name"><span class="weight--500">Brian</span> Desnoyers</h3>
+					    <div class="badge badge--gray">MD/MPH Student</div>
+							
+					    <!-- Social -->
+		                <div class="social">
+							<a class="social__link" href="https://www.linkedin.com/pub/brian-desnoyers/73/187/676"><i class="font-icon icon-linkedin2"></i></a>
+							<a class="social__link" href="https://github.com/bdesnoy"><i class="font-icon icon-github"></i></a>
+		                </div>
+				    </div>
 
-<header>
-  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#home"><h1>Brian Desnoyers<span class="subhead">Personal Website</span></h1></a>
-      </div><!-- navbar-header -->
-      <div class="collapse navbar-collapse" id="collapse">
-        <ul class="nav navbar-nav navbar-right">
-          <li class="active"><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="resume.pdf">Résumé</a></li>
-          <li><a href="mailto:brian@briandesnoyers.com">Contact</a></li>
-        </ul>
-      </div><!-- collapse navbar-collapse -->
-    </div><!-- container -->
-  </nav>
+				    <ul class="contact-block">
+					    <li class="contact-block__item" data-toggle="tooltip" data-placement="top" title="Address">
+						    <i class="font-icon icon-map-pin"></i>Boston, MA
+					    </li>
+				    </ul>
+                </div>				
+				<a class="btn" href="assets/docs/BDesnoyers_CV_rev_03-26-22.pdf"><i class="font-icon icon-download"></i> Download CV</a>
+		    </aside>
+		        
+			<!-- Content -->
+			<div class="content" data-simplebar>
+				<!-- ABOUT -->
+		        <div id="about-tab" class="tabcontent active">
+				    <!-- About -->
+				    <div id="about" class="section mt-0">
+		                <h1 class="title title--h1 title__separate">About Me</h1>
+					    <div class="pt-2 pt-sm-3">
+					        <p>I'm an MD/MPH student at Tufts University currently applying into residency programs in emergency medicine. My background is in mobile app development and data analytics with interests in clinical and personal health informatics.</p>
+				        </div>
+				    </div>
+						
+				    <!-- What -->
+				    <div class="section">
+					    <h2 class="title title--h2">What I'm Doing</h2>
+					    <div class="row">
+							
+							<!-- Case Item -->
+							<div class="col-12 col-lg-6 case-item-wrap">
+								<div class="case-item">
+									<img class="case-item__icon" src="assets/icons/icon-experience.svg" alt="" />
+									<h3 class="title title--h3">Emergency Medicine</h3>
+									<p class="case-item__caption">Currently a 4th year medical student applying into residency programs in emergency medicine.</p>
+								</div>
+							</div>
+							
+							<!-- Case Item -->
+							<div class="col-12 col-lg-6 case-item-wrap">
+								<div class="case-item">
+									<img class="case-item__icon" src="assets/icons/icon-app.svg" alt="" />
+									<h3 class="title title--h3">Mobile Apps</h3>
+									<p class="case-item__caption">Professional development of applications for iOS, macOS, and more.</p>
+								</div>
+							</div>
+							
+							<!-- Case Item -->
+							<div class="col-12 col-lg-6 case-item-wrap">
+								<div class="case-item">
+									<img class="case-item__icon" src="assets/icons/icon-dev.svg" alt="" />
+									<h3 class="title title--h3">Data Analysis</h3>
+									<p class="case-item__caption">Data analytics and machine learning.</p>
+								</div>
+							</div>
+					    </div>	
+				    </div>
+				
+                    
+			    </div><!-- Content End -->
 
-  <div class="carousel fade" data-ride="carousel" id="home">
+			    <!-- RESUME -->
+		        <div id="resume-tab" class="tabcontent">
+                    <div class="section mt-0">
+		                <h1 class="title title--h1 title__separate">Resume</h1>
+				    </div>
+				
+				    <!-- Experience -->
+				    <div class="section">
+					    <h2 class="title title--h2"><img class="title-icon" src="assets/icons/icon-education.svg" alt="" /> Education</h2>
+					    <div class="timeline">
+							<!-- Item -->
+							<article class="timeline__item">
+								<h5 class="title title--h3 timeline__title">Tufts University School of Medicine</h5>
+								<span class="timeline__period">2019 – 2023</span>
+								<p class="timeline__description">Doctor of Medicine and Master of Public Health</p>
+							</article>
+							
+							<!-- Item -->
+							<article class="timeline__item">
+								<h5 class="title title--h3 timeline__title">Northeastern University</h5>
+								<span class="timeline__period">2017 — 2019</span>
+								<p class="timeline__description">Master of Science in Computer Science</p>
+							</article>
+							
+							<!-- Item -->
+							<article class="timeline__item">
+								<h5 class="title title--h3 timeline__title">Northeastern University</h5>
+								<span class="timeline__period">2013 — 2017</span>
+								<p class="timeline__description">Bachelor of Science in Computer Science and Biology</p>
+							</article>
+					    </div>	
+                    </div>
+				
+				    <div class="section">
+					    <h2 class="title title--h2"><img class="title-icon" src="assets/icons/icon-experience.svg" alt="" /> Experience</h2>
+					    <div class="timeline">
+						    <!-- Item -->
+						    <article class="timeline__item">
+						    	<h5 class="title title--h3 timeline__title">Assistant Technical Staff</h5>
+								<h5 class="title title--h4">MIT Lincoln Laboratory</h5>
+						    	<span class="timeline__period">2017 — 2019</span>
+						    	<p class="timeline__description">Developed components within a cybersecurity architecture for federal departments and agencies and performed supporting research, including systems analysis, data science, and design and execution of a longitudinal study to evaluate behavioral effects on security.</p>
+						    </article>
+                                        
+						    <!-- Item -->
+						    <article class="timeline__item">
+							    <h5 class="title title--h3 timeline__title">Productivity Applications Software Engineering Co-Op</h5>
+								<h5 class="title title--h4">Apple</h5>
+							    <span class="timeline__period">July — December 2016</span>
+								<p class="timeline__description">Worked with a geographically distributed team to add tables to Apple Notes as part of iOS 11 and macOS High Sierra.</p>
+								<p class="timeline__description">Built the data model behind the tables feature, handling serialization and logic for deterministic merging across replicas for cloud sync
+									and collaboration, as well as UI components.</p>
+						    </article>
+							
+					    </div>
+				    </div>
+						
+			    </div>
 
-    <ol class="carousel-indicators">
-    </ol>
+				
+			    <!-- CONTACT -->
+		        <div id="contact-tab" class="tabcontent">
+					<div class="section mt-0">
+						<h1 class="title title--h1 title__separate">Contact</h1>
+					</div>
+	
+					<!-- Contact -->
+								
+					<form action="https://formbold.com/s/3VwOo" method="POST" id="email-form" class="contact-form">
+						<div class="row">
+							<div class="form-group col-12 col-md-6">
+								<i class="font-icon icon-user"></i>
+								<input type="text" class="input input__icon" id="nameContact" name="name" placeholder="Full name" required="required" autocomplete="on">
+							</div>
+							<div class="form-group col-12 col-md-6">
+								<i class="font-icon icon-at"></i>
+								<input type="email" class="input input__icon" name="email" placeholder="Email address" required="required" autocomplete="on">
+								<div class="help-block with-errors"></div>
+							</div>
+							<div class="form-group col-12 col-md-12">
+								<textarea class="textarea" name="message" placeholder="Your Message"  rows="4" required="required"></textarea>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-12 col-md-6 order-2 order-md-1 text-center text-md-left">
+							</div>
+							<div class="col-12 col-md-6 order-1 order-md-2 text-right">
+								<button type="submit" class="btn" form="email-form"><i class="font-icon icon-send"></i> Send Message</button>
+							</div>
+						</div>
+					</form>	
+				</div>
+			</div><!-- Content End -->
+		</div><!-- Wrapper End -->
+    </main>
 
-    <div class="carousel-inner fullheight">
-      <div class="item"><img src="images/carousel-beach.jpg" alt="Beach in Rhode Island"></div>
-      <div class="item"><img src="images/carousel-greatwall.jpg" alt="Great Wall"></div>
-      <div class="item"><img src="images/carousel-island.jpg" alt="Boston Harbor Island"></div>
-      <div class="item"><img src="images/carousel-street.jpg" alt="Street in Beijing"></div>
-    </div><!-- carousel-inner -->
+    <!-- SVG masks -->
+    <svg class="svg-defs">
+        <clipPath id="avatar-box">
+            <path d="M1.85379 38.4859C2.9221 18.6653 18.6653 2.92275 38.4858 1.85453 56.0986.905299 77.2792 0 94 0c16.721 0 37.901.905299 55.514 1.85453 19.821 1.06822 35.564 16.81077 36.632 36.63137C187.095 56.0922 188 77.267 188 94c0 16.733-.905 37.908-1.854 55.514-1.068 19.821-16.811 35.563-36.632 36.631C131.901 187.095 110.721 188 94 188c-16.7208 0-37.9014-.905-55.5142-1.855-19.8205-1.068-35.5637-16.81-36.63201-36.631C.904831 131.908 0 110.733 0 94c0-16.733.904831-37.9078 1.85379-55.5141z"/>
+        </clipPath>
+        <clipPath id="avatar-hexagon">
+             <path d="M0 27.2891c0-4.6662 2.4889-8.976 6.52491-11.2986L31.308 1.72845c3.98-2.290382 8.8697-2.305446 12.8637-.03963l25.234 14.31558C73.4807 18.3162 76 22.6478 76 27.3426V56.684c0 4.6805-2.5041 9.0013-6.5597 11.3186L44.4317 82.2915c-3.9869 2.278-8.8765 2.278-12.8634 0L6.55974 68.0026C2.50414 65.6853 0 61.3645 0 56.684V27.2891z"/>
+        </clipPath>		
+    </svg>
 
-    <a class="left carousel-control" href="#home" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left"></span>
-    </a>
-    <a class="right carousel-control" href="#home" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right"></span>
-    </a>
-  </div><!-- home carousel -->
-</header>
+	<!-- JavaScripts -->
+	<script src="assets/js/jquery-3.4.1.min.js"></script>
+	<script src="assets/js/plugins.min.js"></script>
+    <script src="assets/js/common.js"></script>
 
-<div class="main">
-  <div class="page" id="about">
-    <div class="content container">
-      <h2>About</h2>
-      <div class="row">
-        <p class="col-md-5 col-md-offset-1">I am currently working as an analytics and data science researcher at MIT Lincoln Laboratory in Lexington, MA.</p>
-        <p class="col-md-5">I aspire to enter the field of medicine and am interested in studying the ways in which technology can impact healthcare and biomedical research.</p>
-      </div><!-- row -->
-    </div><!-- content container -->
-  </div><!-- mission page -->
-
-  <div class="page" id="skills">
-    <div class="content container">
-      <h2>Skills</h2>
-      <div class="row">
-        <article class="service col-md-4 col-sm-6 col-xs-12">
-          <img class="icon" src="images/skills-languages.svg" alt="Icon">
-          <h3>Languages</h3>
-          <p>Experience working with languages such as Swift, Objective-C, Python, SQL, Perl, R, Java, Lisp/Racket/ACL2, C/C++, XML, and LaTeX.</p>
-        </article>
-
-        <article class="service col-md-4 col-sm-6 col-xs-12">
-          <img class="icon" src="images/skills-systems.svg" alt="Icon">
-          <h3>Systems</h3>
-          <p>Skilled in use of systems running macOS, Ubuntu and other distributions of Linux, and Windows XP/Vista/7/8/10.</p>
-        </article>
-
-        <article class="service col-md-4 col-sm-12 col-xs-12">
-          <img class="icon" src="images/skills-software.svg" alt="Icon">
-          <h3>Software</h3>
-          <p>Proficiency in using software tools including Xcode, IntelliJ IDEA/PyCharm, Eclipse, R Studio, Vim, and Microsoft Office.</p>
-        </article>
-
-      </div><!-- row -->
-    </div><!-- content container -->
-  </div><!-- services page -->
-
-  <div class="page" id="projects">
-    <div class="container-fluid">
-      <h2>Projects</h2>
-      <div class="row">
-        <blockquote class="col-sm-4" id="bikebeacon">
-          <div class="quote">
-            <span class="intro">Bike Beacon</span>
-            <span class="more">I have developed a novel cyclist-driver communication application to be used by cyclists and vehicle drivers to prevent unnecessary collisions. For more information, please visit <a href="http://bikebeacon.com/">bikebeacon.com</a>. Based on input from our buisness advisors, our team has moved to a hardware model to improve user adoption. I am currently working on designing software to run directly on our hardware sensors and transmitters that we hope to market shortly. </span>
-          </div>
-        </blockquote>
-
-        <blockquote class="col-sm-4" id="pvt">
-          <div class="quote">
-            <span class="intro">iOS Psychomotor Vigilance Task</span>
-            <span class="more">I have developed a millisecond accurate iOS PVT along with a cognitive testing platform for Brigham and Women’s Hospital during my co-op working as a technician in their sleep laboratory. The PVT is a sustained attention test that has been shown to respond to changes in alertness caused by factors such as sleep deprivation and circadian phase. I am currently writing a technical paper about the approaches used to accomplish this task and improve iPhone and iPad response time accuracy.</span>
-          </div>
-        </blockquote>
-
-        <blockquote class="col-sm-4" id="streamline">
-          <div class="quote">
-            <span class="intro">Swim Team Web Application</span>
-            <span class="more">I have designed a web application for swim team management that allows swimmers and parents to sign up for meets and view and analyze their times, among other things. The software imports and exports to proprietary formats utilized by commonly used desktop swim and meet management software and allows coaches to easily manage their teams through a simple web interface. I have also designed a companion iOS app and web API. A running instance of the software can be viewed at <a href="http://streamline.pythonanywhere.com/">streamline.pythonanywhere.com</a>.</span>
-          </div>
-        </blockquote>
-      </div>
-    </div><!-- container -->
-  </div><!-- testimonials page -->
-</div><!-- main -->
-
-<footer>
-  <div class="content container-fluid">
-    <div class="row">
-      <div class="col-sm-6">
-        <p>&copy; 2015 Brian Desnoyers.</p>
-      </div><!-- col-sm-6 -->
-      <div class="col-sm-6">
-        <nav class="navbar navbar-default" role="navigation">
-          <ul class="nav navbar-nav navbar-right">
-          <a href="https://www.linkedin.com/pub/brian-desnoyers/73/187/676"><img src="https://static.licdn.com/scds/common/u/img/webpromo/btn_myprofile_160x33.png" width="160" height="33" border="0" alt="View Brian Desnoyers's profile on LinkedIn"></a>
-          </ul>
-        </nav>
-      </div><!-- col-sm-6 -->
-    </div><!-- row -->
-  </div><!-- content container -->
-</footer>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-<script src="js/myscript.js"></script>
+	<!-- Mapbox init -->
+	<script src="assets/js/mapbox.init.js"></script>
 </body>
 </html>
