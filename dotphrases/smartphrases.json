@@ -1,0 +1,9 @@
+{
+  "hello": "hello world",
+  "foo": "foo @bar@",
+  "exam": "exam was {Blank single:19197::\"normal\",\"notable for\"}",
+  "cvexam": "cardiac exam with {Blank multiple:19196::\"RRR\",\"no MRG\"}",
+  "bar": "bar expanded",
+  "lorem": "lorem ipsum",
+  "goodbye": "goodbye cruel world"
+}

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BD SmartPhrases</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+        #inputArea {
+            width: 80%;
+            height: 60%;
+            font-size: 16px;
+            padding: 20px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+            outline: none;
+        }
+        #dropdownContainer {
+            position: absolute;
+            width: 80%;
+            max-height: 200px;
+            background-color: white;
+            border: 1px solid #ccc;
+            overflow-y: auto;
+            display: none;
+            z-index: 100;
+        }
+        #dropdownContainer div {
+            padding: 10px;
+            cursor: pointer;
+        }
+        #dropdownContainer div:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <textarea id="inputArea" placeholder="Start typing..." autofocus></textarea>
+    <div id="dropdownContainer"></div>
+
+    <script>
+        // Fetch the JSON file with the smart phrases
+        fetch('smartphrases.json')
+            .then(response => response.json())
+            .then(data => {
+                smartPhrases = data;
+            })
+            .catch(error => console.error('Error loading smartphrases:', error));
+
+        const inputArea = document.getElementById("inputArea");
+        const dropdownContainer = document.getElementById("dropdownContainer");
+
+        let currentOptions = [];
+        let selectedOptionIndex = -1;
+
+        inputArea.addEventListener("input", function () {
+            const text = inputArea.value;
+            const lastWord = getLastWord(text);
+            if (lastWord.startsWith(".")) {
+                const searchTerm = lastWord.slice(1).toLowerCase();
+                currentOptions = getMatchingPhrases(searchTerm);
+                if (currentOptions.length > 0) {
+                    showDropdown(currentOptions);
+                    selectedOptionIndex = 0; // Default to the first option
+                    highlightOption(); // Highlight the first option
+                } else {
+                    hideDropdown();
+                }
+            } else {
+                hideDropdown();
+            }
+        });
+
+        inputArea.addEventListener("keydown", function (e) {
+            if (e.key === "ArrowDown") {
+                if (currentOptions.length > 0) {
+                    selectedOptionIndex = (selectedOptionIndex + 1) % currentOptions.length;
+                    highlightOption();
+                    e.preventDefault();
+                }
+            } else if (e.key === "ArrowUp") {
+                if (currentOptions.length > 0) {
+                    selectedOptionIndex = (selectedOptionIndex - 1 + currentOptions.length) % currentOptions.length;
+                    highlightOption();
+                    e.preventDefault();
+                }
+            } else if (e.key === "Enter") {
+                if (selectedOptionIndex >= 0) {
+                    autocomplete(currentOptions[selectedOptionIndex]);
+                    e.preventDefault();
+                }
+            } else if (e.key === " ") {
+                if (currentOptions.length > 0) {
+                    autocomplete(currentOptions[selectedOptionIndex]);
+                    e.preventDefault();
+                }
+            }
+        });
+
+        inputArea.addEventListener("click", function () {
+            hideDropdown();
+            handleBracketReplacement();
+        });
+
+        // Helper functions
+        function getLastWord(text) {
+            const words = text.slice(0, inputArea.selectionStart).split(/\s+/);
+            return words[words.length - 1]; // Get the last word before the cursor
+        }
+
+        function getMatchingPhrases(term) {
+            return Object.keys(smartPhrases).filter(key => key.toLowerCase().startsWith(term));
+        }
+
+        function showDropdown(options) {
+            dropdownContainer.innerHTML = "";
+            options.forEach((option, index) => {
+                const div = document.createElement("div");
+                div.textContent = `.${option}`;
+                div.addEventListener("click", () => {
+                    autocomplete(option);
+                });
+                dropdownContainer.appendChild(div);
+            });
+            dropdownContainer.style.display = "block";
+        }
+
+        function hideDropdown() {
+            dropdownContainer.style.display = "none";
+            selectedOptionIndex = -1;
+        }
+
+        function highlightOption() {
+            const options = dropdownContainer.querySelectorAll("div");
+            options.forEach((option, index) => {
+                option.style.backgroundColor = index === selectedOptionIndex ? "#e0e0e0" : "transparent";
+            });
+        }
+
+        function autocomplete(phrase) {
+            const text = inputArea.value;
+            const cursorPosition = inputArea.selectionStart;
+            const lastWord = getLastWord(text);
+            const startPosition = cursorPosition - lastWord.length;
+
+            // Replace only the matched phrase adjacent to the cursor
+            const expandedPhrase = expandPhrase(smartPhrases[phrase]);
+            inputArea.value = text.slice(0, startPosition) + expandedPhrase + " " + text.slice(cursorPosition);
+            hideDropdown();
+
+            // Move the cursor after the inserted phrase
+            inputArea.setSelectionRange(startPosition + expandedPhrase.length + 1, startPosition + expandedPhrase.length + 1);
+            inputArea.focus(); // Refocus on the textarea
+        }
+
+        function expandPhrase(phrase) {
+            // Expand phrases recursively
+            return phrase.replace(/@(\w+)@/g, (match, p1) => {
+                return smartPhrases[p1] ? smartPhrases[p1] : match;
+            }).replace(/\\(\w+)/g, (match, p1) => {
+                return smartPhrases[p1] ? smartPhrases[p1] : match;
+            });
+        }
+
+        function handleBracketReplacement() {
+            const text = inputArea.value;
+            const cursorPosition = inputArea.selectionStart;
+
+            // Regular expressions to match the specified formats
+            const singleRegex = /{Blank single:\d+::"(.*?)"}/g;
+            const multipleRegex = /{Blank multiple:\d+::"(.*?)"}/g;
+
+            // Check if cursor is within a single block
+            const singleMatch = [...text.matchAll(singleRegex)].find(match => {
+                const start = match.index;
+                const end = start + match[0].length;
+                return cursorPosition >= start && cursorPosition <= end;
+            });
+
+            if (singleMatch) {
+                const items = singleMatch[1].split(/","/).map(item => item.replace(/"/g, '')); // Extract items
+                showSelectionPopup(items, false, singleMatch[0]);
+                return;
+            }
+
+            // Check if cursor is within a multiple block
+            const multipleMatch = [...text.matchAll(multipleRegex)].find(match => {
+                const start = match.index;
+                const end = start + match[0].length;
+                return cursorPosition >= start && cursorPosition <= end;
+            });
+
+            if (multipleMatch) {
+                const items = multipleMatch[1].split(/","/).map(item => item.replace(/"/g, '')); // Extract items
+                showSelectionPopup(items, true, multipleMatch[0]);
+            }
+        }
+
+        function showSelectionPopup(items, allowMultiple, originalText) {
+            dropdownContainer.innerHTML = "";
+            dropdownContainer.style.display = "block";
+            const selectedItems = new Set(); // To track selected items
+
+            items.forEach((item, index) => {
+                const div = document.createElement("div");
+                div.textContent = item;
+                div.addEventListener("click", () => {
+                    if (allowMultiple) {
+                        // Toggle selection for multiple
+                        if (selectedItems.has(item)) {
+                            selectedItems.delete(item);
+                            div.style.backgroundColor = "transparent";
+                        } else {
+                            selectedItems.add(item);
+                            div.style.backgroundColor = "#e0e0e0";
+                        }
+                    } else {
+                        // For single selection, just replace and close the popup
+                        replaceText(originalText, item);
+                    }
+                });
+                dropdownContainer.appendChild(div);
+            });
+
+            if (allowMultiple) {
+                const confirmButton = document.createElement("button");
+                confirmButton.textContent = "Confirm Selection";
+                confirmButton.addEventListener("click", () => {
+                    const selected = Array.from(selectedItems).join(", ");
+                    replaceText(originalText, selected);
+                });
+                dropdownContainer.appendChild(confirmButton);
+            }
+        }
+
+        function replaceText(originalText, selected) {
+            const text = inputArea.value;
+            const cursorPosition = inputArea.selectionStart;
+
+            // Replace the original text with the selected items
+            const newText = text.replace(originalText, selected);
+            inputArea.value = newText;
+
+            // Move the cursor to the end of the newly inserted text
+            const newCursorPosition = cursorPosition - originalText.length + selected.length;
+            inputArea.setSelectionRange(newCursorPosition, newCursorPosition);
+            inputArea.focus(); // Refocus on the textarea
+
+            // Hide the dropdown after selection
+            hideDropdown();
+        }
+    </script>
+</body>
+</html>
