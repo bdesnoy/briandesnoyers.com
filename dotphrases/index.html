@@ -189,7 +189,7 @@
             });
 
             if (singleMatch) {
-                const items = singleMatch[1].split(/","/).map(item => item.replace(/"/g, '')); // Extract items
+                const items = singleMatch[1].split(",").map(item => item.replace(/"/g, '')); // Extract items
                 showSelectionPopup(items, false, singleMatch[0]);
                 return;
             }
@@ -202,7 +202,7 @@
             });
 
             if (multipleMatch) {
-                const items = multipleMatch[1].split(/","/).map(item => item.replace(/"/g, '')); // Extract items
+                const items = multipleMatch[1].split(",").map(item => item.replace(/"/g, '')); // Extract items
                 showSelectionPopup(items, true, multipleMatch[0]);
             }
         }
