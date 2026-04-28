@@ -1,0 +1,28 @@
+@media only print {
+  .sps_noprint {
+    display: none;
+  }
+}
+
+@media only print {
+  body {
+    zoom: 80%;
+  }
+}
+
+@media print {
+  @page {
+    size: portrait;
+    margin-left: 1mm;
+    margin-right: 1mm;
+  }
+}
+
+td {
+  border: 1px solid black;
+}
+
+th {
+  border-right: 1px solid black;
+}
+

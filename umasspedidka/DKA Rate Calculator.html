@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en" style="width: 100%;">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>PICU IVF Fluid Calculator</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/css/Navbar-Centered-Brand-icons.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body style="width: 100%;">
+    <div class="container-fluid" style="width: 100%;padding: 0px;">
+        <nav class="navbar navbar-expand-md bg-body py-3 sps_noprint" style="width: 100%;">
+            <div class="container"><a class="navbar-brand d-flex align-items-center" href="#"><span><img src="assets/img/clipboard-image-2.png"></span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-4"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse flex-grow-0 order-md-first" id="navcol-4">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item"><a class="nav-link active" href="DKA%20Rate%20Calculator.html" style="padding-right: 5px;">PICU IVF Calculator</a></li>
+                        <li class="nav-item"><a class="nav-link" href="PED%20DKA%20Rate%20Calculator.html" style="padding-left: 5px;">PED IVF Calculator</a></li>
+                    </ul>
+                    <div class="d-md-none my-2"><button class="btn btn-light me-2" type="button">Button</button><button class="btn btn-primary" type="button">Button</button></div>
+                </div>
+                <div class="d-md-block"><span><strong>PICU IVF Fluid Calculator</strong></span></div>
+            </div>
+        </nav>
+        <div class="table-responsive text-start" style="width: 840px;">
+            <table class="table table-bordered" border="1">
+                <tbody class="text-start" style="width: 100%;">
+                    <tr class="text-center" style="width: 100%;">
+                        <td class="text-center" colspan="2"><span class="text-center" style="font-size: 18px;font-family: Arial;"><strong>Pediatric Diabetic Ketoacidosis Intravenous Fluid (IVF) Rate Calculator (PICU)</strong><br><br></span></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%;">
+                            <div class="col" style="text-align: right;"><label class="form-label">Enter Patient Weight (kg):&nbsp;</label><input type="text" id="patientWeightKg" size="2"></div>
+                            <div class="col" style="text-align: right;"><label class="form-label text-nowrap">TOTAL IV fluid rate to be<br>&nbsp;administered per hour (mL/hr):&nbsp;</label><input type="text" id="totalIVPerHour" size="2"></div>
+                        </td>
+                        <td class="text-center border" style="width: 75%;"><span class="text-center">Bag Components</span>
+                            <div class="border border-1 table-sm table-bordered" style="width: 100%;">
+                                <table class="table table-bordered" border="1">
+                                    <thead>
+                                        <tr>
+                                            <th style="text-align: center;">Bag #1</th>
+                                            <th style="text-align: center;">Bag #2</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td style="text-align: center;">&nbsp;</td>
+                                            <td style="text-align: center;">Dextrose 10%-12.5%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>0.9 % Sodium Chloride</td>
+                                            <td>0.45 % Sodium Chloride</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span>Potassium PHOSPHATE<input id="bag1Cell1" size="2" type="text" style="text-align:center;" value="" /> <strong>mEq/L</strong></span></td>
+                                            <td><span>Potassium PHOSPHATE<input id="bag2Cell1" size="2" type="text" style="text-align:center;" value="" /> <strong>mEq/L</strong></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td><span>Potassium acetate <input id="bag1Cell2" size="2" type="text" style="text-align:center;" value="" /> <strong>mEq/L</strong></span></td>
+                                            <td><span>Potassium acetate <input id="bag2Cell2" size="2" type="text" style="text-align:center;" value="" /> <strong>mEq/L</strong></span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="border border-1 border-black table-sm" style="text-align: center;width: 840px;">
+            <table class="table table-bordered" border="1">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th style="background: rgb(252,252,255);">Blood Glucose</th>
+                        <th></th>
+                        <th>Bag #1 (mL/hr)</th>
+                        <th>Bag #2 (mL/hr)</th>
+                        <th>Instructions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>If blood glucose (mg/dL):</td>
+                        <td style="background: rgb(252,252,255);">&gt;350</td>
+                        <td><i class="far fa-arrow-alt-circle-right" style="font-size: 35px;"></i></td>
+                        <td style="font-weight: bold;"><span id="bag1Cell1Output"></span></td>
+                        <td style="font-weight: bold;"><span id="bag2Cell1Output"></span></td>
+                        <td style="color: rgb(252,0,0);">100% of total IVF rate from Bag #1<br>NONE of Bag #2</td>
+                    </tr>
+                    <tr>
+                        <td>If blood glucose (mg/dL):</td>
+                        <td style="background: rgb(252,252,255);">301-350</td>
+                        <td><i class="far fa-arrow-alt-circle-right" style="font-size: 35px;"></i></td>
+                        <td style="font-weight: bold;"><span id="bag1Cell2Output"></span></td>
+                        <td style="font-weight: bold;"><span id="bag2Cell2Output"></span></td>
+                        <td>75% of total Bag rate from Bag #1<br>25% of total Bag rate from Bag #2</td>
+                    </tr>
+                    <tr>
+                        <td>If blood glucose (mg/dL):</td>
+                        <td style="background: rgb(252,252,255);">251-300</td>
+                        <td><i class="far fa-arrow-alt-circle-right" style="font-size: 35px;"></i></td>
+                        <td style="font-weight: bold;"><span id="bag1Cell3Output"></span></td>
+                        <td style="font-weight: bold;"><span id="bag2Cell3Output"></span></td>
+                        <td>50% of total IVF rate from Bag #1<br>50% of total IVF rate from Bag #2</td>
+                    </tr>
+                    <tr>
+                        <td>If blood glucose (mg/dL):</td>
+                        <td style="background: rgb(252,252,255);">201-250</td>
+                        <td><i class="far fa-arrow-alt-circle-right" style="font-size: 35px;"></i></td>
+                        <td style="font-weight: bold;"><span id="bag1Cell4Output"></span></td>
+                        <td style="font-weight: bold;"><span id="bag2Cell4Output"></span></td>
+                        <td>25% of total Bag rate from Bag #1<br>75% of total Bag rate from Bag #2</td>
+                    </tr>
+                    <tr>
+                        <td>If blood glucose (mg/dL):</td>
+                        <td style="background: rgb(252,252,255);">&lt;200</td>
+                        <td><i class="far fa-arrow-alt-circle-right" style="font-size: 35px;"></i></td>
+                        <td style="font-weight: bold;"><span id="bag1Cell5Output"></span></td>
+                        <td style="font-weight: bold;"><span id="bag2Cell5Output"></span></td>
+                        <td>NONE of Bag #1<br>100% of total IVF rate from Bag #2</td>
+                    </tr>
+                    <tr>
+                        <td>If blood glucose (mg/dL):</td>
+                        <td style="background: rgb(252,252,255);">BG &lt;60</td>
+                        <td><i class="far fa-arrow-alt-circle-right" style="font-size: 35px;"></i></td>
+                        <td colspan="3" style="color: rgb(255,0,0);">Call Provider Immediately and Hold insulin infusion</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/DKA_Rate_Calculator.js"></script>
+</body>
+
+</html>
