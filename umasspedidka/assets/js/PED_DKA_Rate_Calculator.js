@@ -41,4 +41,14 @@ $(document).ready(function () {
                 $("#bag2Cell4Output").text(($totalIVAdmin *.75).toFixed(1));
                 $("#bag2Cell5Output").text(($totalIVAdmin*1).toFixed(1));
             });
+
+            // Get weight value from current URL: ?weight=29
+            const params = new URLSearchParams(window.location.search);
+            const urlParamWeight = params.get('weight');
+
+            // Set value into an input field
+            if (urlParamWeight) {
+                document.getElementById('patientWeightKg').value = urlParamWeight;
+                $('#patientWeightKg').val(urlParamWeight).trigger('input');
+            }
 });
